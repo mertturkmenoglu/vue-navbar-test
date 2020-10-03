@@ -13,39 +13,12 @@
 
     <div class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
+        <li v-for="(link, idx) in navLinks" :key="idx" class="nav-item mr-2">
           <div class="nav-link">
-            <router-link class="fas fa-search text-white" to="/search">
-            </router-link>
-          </div>
-        </li>
-        <li class="nav-item mr-2">
-          <div class="nav-link">
-            <router-link class="fas fa-envelope text-white" to="/messages">
-            </router-link>
-          </div>
-        </li>
-        <li class="nav-item mr-2">
-          <div class="nav-link">
-            <router-link class="fas fa-bell text-white" to="/notifications">
-            </router-link>
-          </div>
-        </li>
-        <li class="nav-item mr-2">
-          <div class="nav-link">
-            <router-link class="fas fa-user-friends text-white" to="/friends">
-            </router-link>
-          </div>
-        </li>
-        <li class="nav-item mr-2">
-          <div class="nav-link">
-            <router-link class="fas fa-user-circle text-white" to="/profile">
-            </router-link>
-          </div>
-        </li>
-        <li class="nav-item mr-2">
-          <div class="nav-link">
-            <router-link class="fas fa-align-justify text-white" to="/options">
+            <router-link
+              :class="['fas', link.logo, 'text-white']"
+              :to="link.dest"
+            >
             </router-link>
           </div>
         </li>
@@ -55,7 +28,38 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      navLinks: [
+        {
+          logo: "fa-search",
+          dest: "/search",
+        },
+        {
+          logo: "fa-envelope",
+          dest: "/messages",
+        },
+        {
+          logo: "fa-bell",
+          dest: "/notifications",
+        },
+        {
+          logo: "fa-user-friends",
+          dest: "/friends",
+        },
+        {
+          logo: "fa-user-circle",
+          dest: "/profile",
+        },
+        {
+          logo: "fa-align-justify",
+          dest: "/options",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
